@@ -1,7 +1,7 @@
 <?php
 	require 'core/Model.php';
 
-	class User extends Model {
+	class Auth extends Model {
 		public function test() {
 			print_r($this->db);
 		}

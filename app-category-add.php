@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="assets/css/main.css">
-	<title>Городской портал - войти</title>
+	<title>Городской портал - добавление категории заявки</title>
 </head>
 <body>
 	<header class="header">
@@ -14,32 +14,22 @@
 					<img class="logo__img" src="assets/img/logo-light.png" alt="">
 				</a>
 				<div class="header__inline">
-					<a href="register.php" class="btn">Создать аккаунт</a>
-					<a href="index.php" class="btn btn_outline">На главную</a>
+					<a href="admin.php" class="btn">Администратор</a>
 				</div>
 			</div>
 		</div>
 	</header>
 	<main class="main">
-		<!-- войти -->
+		<!-- добавить заявку -->
 		<section class="section">
 			<div class="container">
 				<div class="section__heading">
-					<h1 class="section__title">Городской портал - войти</h1>
+					<h1 class="section__title">Добавление категории заявки</h1>
 				</div>
 				<div class="section__content">
-					<div class="alert">
-						<div class="alert__content">
-							<span class="alert__text">
-								Неправильная пара логин-пароль.
-							</span>
-							<button class="btn-close">&times;</button>
-						</div>
-					</div>
 					<form class="form-inline">
-						<input required name="login" type="text" class="input" placeholder="Логин">
-						<input required name="password" type="password" class="input" placeholder="Пароль">
-						<button class="btn">Войти</button>
+						<input required name="title" type="text" class="input" placeholder="Название категории">
+						<button class="btn">Добавить</button>
 					</form>
 				</div>
 			</div>

@@ -43,12 +43,14 @@ a {
 	--text-color: #222;
 	--text-muted-color: #aaacad;
 	--accent-color: #503cf0;
-	--accent-light-color: rgba(80, 60, 240, 0.2);
+	--accent-light-color: rgba(80, 60, 240, .2);
 	--danger-color: #fa648c;
+	--danger-light-color: rgb(250, 100, 140, .2);
 	--border-color: #e6e6e7;
 	--footer: #0e0e0e;
 	--h1-size: 28px;
 	--h2-size: 20px;
+	--h3-size: 16px;
 	--text-size: 14px;
 	--small-size: 12px;
 	--line-height: 1.5;
@@ -58,7 +60,8 @@ a {
 	--bdrs: 0.5em;
 	--bdrs-sm: 0.2em;
 	--trs: 0.4s ease;
-	--shadow: 0 0 20rem rgba(0, 0, 0, 0.1);
+	--shadow: 0 0 20rem rgba(0, 0, 0, .1);
+	--overlay: rgba(0, 0, 0, .5);
 }
 
 /* styles */
@@ -117,6 +120,11 @@ h2 {
 	font-weight: 700;
 }
 
+h3 {
+	font-size: var(--h3-size);
+	font-weight: 700;
+}
+
 b, strong {
 	font-weight: 500;
 }
@@ -127,6 +135,7 @@ small {
 
 textarea {
 	resize: vertical;
+	min-height: 100rem;
 }
 
 th {
@@ -253,7 +262,7 @@ th {
 	border-radius: var(--bdrs-sm);
 	border: 1px solid var(--btn-bg);
 	background: var(--btn-bg);
-	padding: 4rem 5rem;
+	padding: 4rem 6rem;
 	color: #fff;
 	transition: var(--trs) box-shadow;
 }
@@ -266,6 +275,11 @@ th {
 .btn_outline {
 	background: transparent;
 	color: var(--btn-bg);
+}
+
+.btn_danger {
+	--btn-bg: var(--danger-color);
+	--btn-hover-bg: var(--danger-light-color);
 }
 
 /* app counter */
@@ -353,6 +367,10 @@ th {
 	max-height: 30rem;
 }
 
+.alert + .alert {
+	margin-top: var(--gap-sm);
+}
+
 .alert_closed {
 	margin: 0;
 	max-height: 0;
@@ -368,13 +386,20 @@ th {
 	gap: var(--gap-sm);
 }
 
-.alert__close {
+/* btn close */
+
+.btn-close {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 10rem;
 	height: 10rem;
 	font-size: var(--h2-size);
+	transition: var(--trs) opacity;
+}
+
+.btn-close:hover {
+	opacity: 0.6;
 }
 
 /* label checkbox */
@@ -403,7 +428,7 @@ th {
 }
 
 .table tr, th, td {
-	padding: 4rem;
+	padding: 4rem 6rem;
 	border: 1px solid var(--border-color);
 	text-align: center;
 }
@@ -437,6 +462,15 @@ th {
 .space-b {
 	display: block;
 	margin-bottom: 10rem;
+}
+
+/* inline */
+
+.inline {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: var(--gap-sm);
 }
 
 /* media */

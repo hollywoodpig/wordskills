@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="assets/css/main.css">
-	<title>Профиль Anon</title>
+	<title>Список категорий заявок</title>
 </head>
 <body>
 	<header class="header">
@@ -14,33 +14,19 @@
 					<img class="logo__img" src="assets/img/logo-light.png" alt="">
 				</a>
 				<div class="header__inline">
-					<a href="app-add.php" class="btn">Создать заявку</a>
-					<a href="logout.php" class="btn btn_outline">Выйти</a>
+					<a href="admin.php" class="btn">Администратор</a>
 				</div>
 			</div>
 		</div>
 	</header>
 	<main class="main">
-		<!-- профиль -->
 		<section class="section">
 			<div class="container">
 				<div class="section__heading">
-					<h1 class="section__title">Добро пожаловать, Anon. Вот ваши заявки:</h1>
+					<h1 class="section__title">Список категорий заявок:</h1>
 				</div>
 				<div class="section__content">
-					<!-- фильтр -->
-					<div class="space-b">
-						<form class="form-inline">
-							<select class="input" name="filter">
-								<option selected disabled >Показывать только по статусу</option>
-								<option value="Новая">Новая</option>
-								<option value="Решена">Решена</option>
-								<option value="Отклонена">Отклонена</option>
-							</select>
-							<button class="btn">Вывести</button>
-						</form>
-					</div>
-					<!-- заявки пользователя -->
+					<!-- категории заявок -->
 					<div class="table">
 						<table>
 							<tbody>
@@ -62,7 +48,11 @@
 									<td><p class="">Суицид</p></td>
 									<td><p class="">19.06.18</p></td>
 									<td><p class="">Я дед инсайд, я дед инсайд, чел мне похуй на жизнь, я хочу умереть</p></td>
-									<td><a href="app-delete.php" class="link link_disabled">Удалить</a></td>
+									<td>
+										<form>
+											<button class="link link_danger">Удалить</button>
+										</form>
+									</td>
 								</tr>
 								<!-- 2 ряд -->
 								<tr>
@@ -72,7 +62,11 @@
 									<td><p class="">Суицид</p></td>
 									<td><p class="">19.06.18</p></td>
 									<td><p class="">Я дед инсайд, я дед инсайд, чел мне похуй на жизнь, я хочу умереть</p></td>
-									<td><a href="app-delete.php" class="link link_danger">Удалить</a></td>
+									<td>
+										<form>
+											<button class="link link_danger">Удалить</button>
+										</form>
+									</td>
 								</tr>
 								<!-- 3 ряд -->
 								<tr>
@@ -82,7 +76,11 @@
 									<td><p class="">Суицид</p></td>
 									<td><p class="">19.06.18</p></td>
 									<td><p class="">Я дед инсайд, я дед инсайд, чел мне похуй на жизнь, я хочу умереть</p></td>
-									<td><a href="app-delete.php" class="link link_danger">Удалить</a></td>
+									<td>
+										<form>
+											<button class="link link_danger">Удалить</button>
+										</form>
+									</td>
 								</tr>
 								<!-- 4 ряд -->
 								<tr>
@@ -92,7 +90,11 @@
 									<td><p class="">Суицид</p></td>
 									<td><p class="">19.06.18</p></td>
 									<td><p class="">Я дед инсайд, я дед инсайд, чел мне похуй на жизнь, я хочу умереть</p></td>
-									<td><a href="app-delete.php" class="link link_danger">Удалить</a></td>
+									<td>
+										<form>
+											<button class="link link_danger">Удалить</button>
+										</form>
+									</td>
 								</tr>
 							</tbody>
 						</table>

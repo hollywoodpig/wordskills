@@ -33,7 +33,7 @@
 							<span class="alert__text">
 								ФИО должно начинаться с большой буквы.
 							</span>
-							<button class="alert__close">&times;</button>
+							<button class="btn-close">&times;</button>
 						</div>
 					</div>
 					<form class="form">
