@@ -26,6 +26,7 @@
 			<div class="container">
 				<div class="section__heading">
 					<h1 class="section__title">Городской портал - cделаем лучше вместе</h1>
+					<!-- счетчик -->
 					<div class="app-counter">
 						<span class="app-counter__text">Заявок решено:</span>
 						<strong class="app-counter__value">5</strong>
@@ -103,5 +104,6 @@
 	</footer>
 	
 	<script src="assets/js/main.js"></script>
+	<script src="assets/js/counter.js"></script>
 </body>
 </html>

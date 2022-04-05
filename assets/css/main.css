@@ -288,6 +288,30 @@ th {
 	color: var(--text-muted-color);
 }
 
+.app-counter__value {
+	transition: var(--trs) opacity;
+}
+
+.app-counter__value.active {
+	animation: var(--trs) fade;
+}
+
+/* keyframes */
+
+@keyframes fade {
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
 /* logo */
 
 .logo {
