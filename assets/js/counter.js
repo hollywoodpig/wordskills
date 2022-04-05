@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	const counter = document.querySelector('.app-counter__value')
 
 	let counterValue = parseInt(counter.textContent)
-	
-	counter.addEventListener('click', () => {
+
+	setInterval(() => {
 		counter.classList.add('active')
 	
 		setTimeout(() => {
@@ -13,5 +13,5 @@ document.addEventListener('DOMContentLoaded', () => {
 		setTimeout(() => {
 			counter.classList.remove('active')
 		}, 400)
-	})
+	}, 5000)
 })
