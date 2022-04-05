@@ -14,8 +14,7 @@
 					<img class="logo__img" src="assets/img/logo-light.png" alt="">
 				</a>
 				<div class="header__inline">
-					<a href="app-category-add.php" class="btn">Создать категорию</a>
-					<a href="app-category-delete.php" class="btn">Управление категориями</a>
+					<a href="appCategory.php" class="btn">Управление категориями</a>
 					<a href="logout.php" class="btn btn_outline">Выйти</a>
 				</div>
 			</div>
@@ -51,8 +50,8 @@
 									<td>Суицид</td>
 									<td>19.06.18</td>
 									<td>Help me, i ain't got no brains, i can feel no pain</td>
-									<td><a href="app-approve.php" class="link">Одобрить</a></td>
-									<td><a href="app-cancel.php" class="link link_danger">Отклонить</a></td>
+									<td><a href="appApprove.php" class="link">Одобрить</a></td>
+									<td><a href="appCancel.php" class="link link_danger">Отклонить</a></td>
 								</tr>
 								<!-- 2 ряд -->
 								<tr>
@@ -62,8 +61,8 @@
 									<td>Суицид</td>
 									<td>19.06.18</td>
 									<td>Help me, i ain't got no brains, i can feel no pain</td>
-									<td><a href="app-approve.php" class="link">Одобрить</a></td>
-									<td><a href="app-cancel.php" class="link link_danger">Отклонить</a></td>
+									<td><a href="appApprove.php" class="link">Одобрить</a></td>
+									<td><a href="appCancel.php" class="link link_danger">Отклонить</a></td>
 								</tr>
 								<!-- 3 ряд -->
 								<tr>
@@ -73,8 +72,8 @@
 									<td>Суицид</td>
 									<td>19.06.18</td>
 									<td>Help me, i ain't got no brains, i can feel no pain</td>
-									<td><a href="app-approve.php" class="link">Одобрить</a></td>
-									<td><a href="app-cancel.php" class="link link_danger">Отклонить</a></td>
+									<td><a href="appApprove.php" class="link">Одобрить</a></td>
+									<td><a href="appCancel.php" class="link link_danger">Отклонить</a></td>
 								</tr>
 								<!-- 4 ряд -->
 								<tr>
@@ -84,8 +83,8 @@
 									<td>Суицид</td>
 									<td>19.06.18</td>
 									<td>Help me, i ain't got no brains, i can feel no pain</td>
-									<td><a href="app-approve.php" class="link">Одобрить</a></td>
-									<td><a href="app-cancel.php" class="link link_danger">Отклонить</a></td>
+									<td><a href="appApprove.php" class="link">Одобрить</a></td>
+									<td><a href="appCancel.php" class="link link_danger">Отклонить</a></td>
 								</tr>
 							</tbody>
 						</table>

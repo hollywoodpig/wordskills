@@ -28,16 +28,9 @@
 					<h1 class="section__title">Городской портал - создать аккаунт</h1>
 				</div>
 				<div class="section__content">
-					<div class="alert">
-						<div class="alert__content">
-							<span class="alert__text">
-								ФИО должно начинаться с большой буквы.
-							</span>
-							<button class="btn-close">&times;</button>
-						</div>
-					</div>
-					<form class="form">
+					<form class="form" id="register-form">
 						<input required name="name" type="text" class="input input_danger" placeholder="ФИО">
+						<p class="text-danger">ФИО должно быть заполнено.</p>
 						<input required name="login" type="text" class="input" placeholder="Логин">
 						<input required name="email" type="email" class="input" placeholder="Почта">
 						<input required name="password" type="password" class="input" placeholder="Пароль">
@@ -61,5 +54,6 @@
 	</footer>
 	
 	<script src="assets/js/main.js"></script>
+	<script src="assets/js/registerValidate.js"></script>
 </body>
 </html>

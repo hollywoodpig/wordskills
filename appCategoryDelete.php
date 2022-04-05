@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="assets/css/main.css">
-	<title>Городской портал - добавление категории заявки</title>
+	<title>Городской портал - удаление категории заявки</title>
 </head>
 <body>
 	<header class="header">
@@ -20,16 +20,17 @@
 		</div>
 	</header>
 	<main class="main">
-		<!-- добавить заявку -->
+		<!-- удалить -->
 		<section class="section">
 			<div class="container">
 				<div class="section__heading">
-					<h1 class="section__title">Добавление категории заявки</h1>
+					<h1 class="section__title">Вы уверены, что хотите удалить категорию заявки "Коты"?</h1>
+					<p class="text-muted">Все заявки с данной категорией будут безвозвратно удалены.</p>
 				</div>
 				<div class="section__content">
 					<form class="form-inline">
-						<input required name="title" type="text" class="input" placeholder="Название категории">
-						<button class="btn">Добавить</button>
+						<button class="btn">Удалить</button>
+						<a href="profile.php" class="btn btn_outline">Вернуться назад</a>
 					</form>
 				</div>
 			</div>

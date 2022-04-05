@@ -14,7 +14,7 @@
 					<img class="logo__img" src="assets/img/logo-light.png" alt="">
 				</a>
 				<div class="header__inline">
-					<a href="app-add.php" class="btn">Создать заявку</a>
+					<a href="appAdd.php" class="btn">Создать заявку</a>
 					<a href="logout.php" class="btn btn_outline">Выйти</a>
 				</div>
 			</div>
@@ -31,7 +31,7 @@
 					<!-- фильтр -->
 					<div class="space-b">
 						<form class="form-inline">
-							<select class="input" name="filter">
+							<select class="input" name="status">
 								<option selected disabled >Показывать только по статусу</option>
 								<option value="Новая">Новая</option>
 								<option value="Решена">Решена</option>
@@ -62,7 +62,7 @@
 									<td><p class="">Суицид</p></td>
 									<td><p class="">19.06.18</p></td>
 									<td><p class="">Help me, i ain't got no brains, i can feel no pain</p></td>
-									<td><a href="app-delete.php" class="link link_disabled">Удалить</a></td>
+									<td><a href="appDelete.php" class="link link_disabled">Удалить</a></td>
 								</tr>
 								<!-- 2 ряд -->
 								<tr>
@@ -72,7 +72,7 @@
 									<td><p class="">Суицид</p></td>
 									<td><p class="">19.06.18</p></td>
 									<td><p class="">Help me, i ain't got no brains, i can feel no pain</p></td>
-									<td><a href="app-delete.php" class="link link_danger">Удалить</a></td>
+									<td><a href="appDelete.php" class="link link_danger">Удалить</a></td>
 								</tr>
 								<!-- 3 ряд -->
 								<tr>
@@ -82,7 +82,7 @@
 									<td><p class="">Суицид</p></td>
 									<td><p class="">19.06.18</p></td>
 									<td><p class="">Help me, i ain't got no brains, i can feel no pain</p></td>
-									<td><a href="app-delete.php" class="link link_danger">Удалить</a></td>
+									<td><a href="appDelete.php" class="link link_danger">Удалить</a></td>
 								</tr>
 								<!-- 4 ряд -->
 								<tr>
@@ -92,7 +92,7 @@
 									<td><p class="">Суицид</p></td>
 									<td><p class="">19.06.18</p></td>
 									<td><p class="">Help me, i ain't got no brains, i can feel no pain</p></td>
-									<td><a href="app-delete.php" class="link link_danger">Удалить</a></td>
+									<td><a href="appDelete.php" class="link link_danger">Удалить</a></td>
 								</tr>
 							</tbody>
 						</table>
