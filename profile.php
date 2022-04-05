@@ -61,7 +61,7 @@
 									<td><p class="">Отклонена</p></td>
 									<td><p class="">Суицид</p></td>
 									<td><p class="">19.06.18</p></td>
-									<td><p class="">Я дед инсайд, я дед инсайд, чел мне похуй на жизнь, я хочу умереть</p></td>
+									<td><p class="">Help me, i ain't got no brains, i can feel no pain</p></td>
 									<td><a href="app-delete.php" class="link link_disabled">Удалить</a></td>
 								</tr>
 								<!-- 2 ряд -->
@@ -71,7 +71,7 @@
 									<td><p class="">Новая</p></td>
 									<td><p class="">Суицид</p></td>
 									<td><p class="">19.06.18</p></td>
-									<td><p class="">Я дед инсайд, я дед инсайд, чел мне похуй на жизнь, я хочу умереть</p></td>
+									<td><p class="">Help me, i ain't got no brains, i can feel no pain</p></td>
 									<td><a href="app-delete.php" class="link link_danger">Удалить</a></td>
 								</tr>
 								<!-- 3 ряд -->
@@ -81,7 +81,7 @@
 									<td><p class="">Новая</p></td>
 									<td><p class="">Суицид</p></td>
 									<td><p class="">19.06.18</p></td>
-									<td><p class="">Я дед инсайд, я дед инсайд, чел мне похуй на жизнь, я хочу умереть</p></td>
+									<td><p class="">Help me, i ain't got no brains, i can feel no pain</p></td>
 									<td><a href="app-delete.php" class="link link_danger">Удалить</a></td>
 								</tr>
 								<!-- 4 ряд -->
@@ -91,7 +91,7 @@
 									<td><p class="">Новая</p></td>
 									<td><p class="">Суицид</p></td>
 									<td><p class="">19.06.18</p></td>
-									<td><p class="">Я дед инсайд, я дед инсайд, чел мне похуй на жизнь, я хочу умереть</p></td>
+									<td><p class="">Help me, i ain't got no brains, i can feel no pain</p></td>
 									<td><a href="app-delete.php" class="link link_danger">Удалить</a></td>
 								</tr>
 							</tbody>

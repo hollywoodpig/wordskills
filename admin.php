@@ -50,7 +50,7 @@
 									<td>Новая</td>
 									<td>Суицид</td>
 									<td>19.06.18</td>
-									<td>Я дед инсайд, я дед инсайд, чел мне похуй на жизнь, я хочу умереть</td>
+									<td>Help me, i ain't got no brains, i can feel no pain</td>
 									<td><a href="app-approve.php" class="link">Одобрить</a></td>
 									<td><a href="app-cancel.php" class="link link_danger">Отклонить</a></td>
 								</tr>
@@ -61,7 +61,7 @@
 									<td>Новая</td>
 									<td>Суицид</td>
 									<td>19.06.18</td>
-									<td>Я дед инсайд, я дед инсайд, чел мне похуй на жизнь, я хочу умереть</td>
+									<td>Help me, i ain't got no brains, i can feel no pain</td>
 									<td><a href="app-approve.php" class="link">Одобрить</a></td>
 									<td><a href="app-cancel.php" class="link link_danger">Отклонить</a></td>
 								</tr>
@@ -72,7 +72,7 @@
 									<td>Новая</td>
 									<td>Суицид</td>
 									<td>19.06.18</td>
-									<td>Я дед инсайд, я дед инсайд, чел мне похуй на жизнь, я хочу умереть</td>
+									<td>Help me, i ain't got no brains, i can feel no pain</td>
 									<td><a href="app-approve.php" class="link">Одобрить</a></td>
 									<td><a href="app-cancel.php" class="link link_danger">Отклонить</a></td>
 								</tr>
@@ -83,7 +83,7 @@
 									<td>Новая</td>
 									<td>Суицид</td>
 									<td>19.06.18</td>
-									<td>Я дед инсайд, я дед инсайд, чел мне похуй на жизнь, я хочу умереть</td>
+									<td>Help me, i ain't got no brains, i can feel no pain</td>
 									<td><a href="app-approve.php" class="link">Одобрить</a></td>
 									<td><a href="app-cancel.php" class="link link_danger">Отклонить</a></td>
 								</tr>
