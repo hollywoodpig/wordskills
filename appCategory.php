@@ -46,19 +46,19 @@
 								<tr>
 									<td>1</td>
 									<td>Коты</td>
-									<td><a href="appCategoryDelete.php" class="link link_danger">Удалить</a></td>
+									<td><a href="#" data-modal-open="app-category-delete" data-app-id="1" class="link link_danger">Удалить</a></td>
 								</tr>
 								<!-- 2 ряд -->
 								<tr>
 									<td>2</td>
 									<td>Не коты</td>
-									<td><a href="appCategoryDelete.php" class="link link_danger">Удалить</a></td>
+									<td><a href="#" data-modal-open="app-category-delete" data-app-id="2" class="link link_danger">Удалить</a></td>
 								</tr>
 								<!-- 3 ряд -->
 								<tr>
 									<td>3</td>
 									<td>Что-нибудь</td>
-									<td><a href="appCategoryDelete.php" class="link link_danger">Удалить</a></td>
+									<td><a href="#" data-modal-open="app-category-delete" data-app-id="3" class="link link_danger">Удалить</a></td>
 								</tr>
 							</tbody>
 						</table>
@@ -74,7 +74,28 @@
 			</div>
 		</div>
 	</footer>
+	<!-- удалить категорию заявки -->
+	<div class="modal" id="app-category-delete">
+		<div class="modal__overlay" data-modal-close></div>
+		<div class="modal__window">
+			<div class="modal__heading">
+				<h3 class="modal__title">Удалить категорию заявки?</h3>
+				<button class="btn-close" data-modal-close>&times;</button>
+			</div>
+			<div class="modal__content">
+				<p>Все заявки с данной категорией будут безвозвратно удалены.</p>
+				<form style="width: 100%;">
+					<input type="hidden" name="app-category-delete-id" id="app-category-delete-id">
+					<div class="inline inline_grow">
+						<button class="btn btn_danger">Удалить</button>
+						<a class="btn btn_danger btn_outline" href="#" data-modal-close>Закрыть</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 	
 	<script src="assets/js/main.js"></script>
+	<script src="assets/js/modal.js"></script>
 </body>
 </html>

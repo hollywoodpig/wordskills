@@ -15,7 +15,7 @@
 				</a>
 				<div class="header__inline">
 					<a href="appCategory.php" class="btn">Управление категориями</a>
-					<a href="logout.php" class="btn btn_outline">Выйти</a>
+					<a href="api/logout.php" class="btn btn_outline">Выйти</a>
 				</div>
 			</div>
 		</div>
@@ -46,23 +46,23 @@
 								<tr>
 									<td>1</td>
 									<td>Убейте меня пожалуйста</td>
-									<td>Новая</td>
+									<td>Отклонена</td>
 									<td>Суицид</td>
 									<td>19.06.18</td>
 									<td>Help me, i ain't got no brains, i can feel no pain</td>
-									<td><a href="appApprove.php" class="link">Одобрить</a></td>
-									<td><a href="appCancel.php" class="link link_danger">Отклонить</a></td>
+									<td><a href="#" class="link link_disabled">Одобрить</a></td>
+									<td><a href="#" class="link link_disabled">Отклонить</a></td>
 								</tr>
 								<!-- 2 ряд -->
 								<tr>
 									<td>2</td>
 									<td>Убейте меня пожалуйста</td>
-									<td>Новая</td>
+									<td>Решено</td>
 									<td>Суицид</td>
 									<td>19.06.18</td>
 									<td>Help me, i ain't got no brains, i can feel no pain</td>
-									<td><a href="appApprove.php" class="link">Одобрить</a></td>
-									<td><a href="appCancel.php" class="link link_danger">Отклонить</a></td>
+									<td><a href="#" class="link link_disabled">Одобрить</a></td>
+									<td><a href="#" class="link link_disabled">Отклонить</a></td>
 								</tr>
 								<!-- 3 ряд -->
 								<tr>
@@ -72,8 +72,8 @@
 									<td>Суицид</td>
 									<td>19.06.18</td>
 									<td>Help me, i ain't got no brains, i can feel no pain</td>
-									<td><a href="appApprove.php" class="link">Одобрить</a></td>
-									<td><a href="appCancel.php" class="link link_danger">Отклонить</a></td>
+									<td><a href="#" data-modal-open="app-approve" data-app-id="3" class="link">Одобрить</a></td>
+									<td><a href="#" data-modal-open="app-cancel" data-app-id="3" class="link link_danger">Отклонить</a></td>
 								</tr>
 								<!-- 4 ряд -->
 								<tr>
@@ -83,8 +83,8 @@
 									<td>Суицид</td>
 									<td>19.06.18</td>
 									<td>Help me, i ain't got no brains, i can feel no pain</td>
-									<td><a href="appApprove.php" class="link">Одобрить</a></td>
-									<td><a href="appCancel.php" class="link link_danger">Отклонить</a></td>
+									<td><a href="#" data-modal-open="app-approve" data-app-id="4" class="link">Одобрить</a></td>
+									<td><a href="#" data-modal-open="app-cancel" data-app-id="4" class="link link_danger">Отклонить</a></td>
 								</tr>
 							</tbody>
 						</table>
@@ -100,7 +100,52 @@
 			</div>
 		</div>
 	</footer>
+	<!-- отклонить заявку -->
+	<div class="modal" id="app-cancel">
+		<div class="modal__overlay" data-modal-close></div>
+		<div class="modal__window">
+			<div class="modal__heading">
+				<h3 class="modal__title">Отклонить заявку?</h3>
+				<button class="btn-close" data-modal-close>&times;</button>
+			</div>
+			<div class="modal__content">
+				<form style="width: 100%;">
+					<input type="hidden" name="app-cancel-id" id="app-cancel-id">
+					<div class="space-b">
+						<textarea required class="input" name="refuse" placeholder="Причина отказа"></textarea>
+					</div>
+					<div class="inline inline_grow">
+						<button class="btn">Отклонить</button>
+						<a class="btn btn_outline" href="#" data-modal-close>Закрыть</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- одобрить заявку -->
+	<div class="modal" id="app-approve">
+		<div class="modal__overlay" data-modal-close></div>
+		<div class="modal__window">
+			<div class="modal__heading">
+				<h3 class="modal__title">Одобрить заявку?</h3>
+				<button class="btn-close" data-modal-close>&times;</button>
+			</div>
+			<div class="modal__content">
+				<form style="width: 100%;" enctype="multipart/form-data">
+					<input type="hidden" name="app-approve-id" id="app-approve-id">
+					<div class="space-b">
+					<input required class="input" type="file" name="photo" accept="image/jpg, image/jpeg, image/png, image/bmp" placeholder="Фотография заявки">
+					</div>
+					<div class="inline inline_grow">
+						<button class="btn">Одобрить</button>
+						<a class="btn btn_outline" href="#" data-modal-close>Закрыть</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 	
 	<script src="assets/js/main.js"></script>
+	<script src="assets/js/modal.js"></script>
 </body>
 </html>

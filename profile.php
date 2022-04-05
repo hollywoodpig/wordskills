@@ -15,7 +15,7 @@
 				</a>
 				<div class="header__inline">
 					<a href="appAdd.php" class="btn">Создать заявку</a>
-					<a href="logout.php" class="btn btn_outline">Выйти</a>
+					<a href="api/logout.php" class="btn btn_outline">Выйти</a>
 				</div>
 			</div>
 		</div>
@@ -62,7 +62,7 @@
 									<td><p class="">Суицид</p></td>
 									<td><p class="">19.06.18</p></td>
 									<td><p class="">Help me, i ain't got no brains, i can feel no pain</p></td>
-									<td><a href="appDelete.php" class="link link_disabled">Удалить</a></td>
+									<td><a href="#" class="link link_disabled">Удалить</a></td>
 								</tr>
 								<!-- 2 ряд -->
 								<tr>
@@ -72,7 +72,7 @@
 									<td><p class="">Суицид</p></td>
 									<td><p class="">19.06.18</p></td>
 									<td><p class="">Help me, i ain't got no brains, i can feel no pain</p></td>
-									<td><a href="appDelete.php" class="link link_danger">Удалить</a></td>
+									<td><a href="#" data-modal-open="app-delete" data-app-id="2" class="link link_danger">Удалить</a></td>
 								</tr>
 								<!-- 3 ряд -->
 								<tr>
@@ -82,7 +82,7 @@
 									<td><p class="">Суицид</p></td>
 									<td><p class="">19.06.18</p></td>
 									<td><p class="">Help me, i ain't got no brains, i can feel no pain</p></td>
-									<td><a href="appDelete.php" class="link link_danger">Удалить</a></td>
+									<td><a href="#" data-modal-open="app-delete" data-app-id="3" class="link link_danger">Удалить</a></td>
 								</tr>
 								<!-- 4 ряд -->
 								<tr>
@@ -92,7 +92,7 @@
 									<td><p class="">Суицид</p></td>
 									<td><p class="">19.06.18</p></td>
 									<td><p class="">Help me, i ain't got no brains, i can feel no pain</p></td>
-									<td><a href="appDelete.php" class="link link_danger">Удалить</a></td>
+									<td><a href="#" data-modal-open="app-delete" data-app-id="4" class="link link_danger">Удалить</a></td>
 								</tr>
 							</tbody>
 						</table>
@@ -108,7 +108,28 @@
 			</div>
 		</div>
 	</footer>
+	<!-- удалить заявку -->
+	<div class="modal" id="app-delete">
+		<div class="modal__overlay" data-modal-close></div>
+		<div class="modal__window">
+			<div class="modal__heading">
+				<h3 class="modal__title">Удалить заявку?</h3>
+				<button class="btn-close" data-modal-close>&times;</button>
+			</div>
+			<div class="modal__content">
+				<p>Данное действие нельзя будет отменить.</p>
+				<form style="width: 100%;">
+					<input type="hidden" name="app-delete-id" id="app-delete-id">
+					<div class="inline inline_grow">
+						<button class="btn btn_danger">Удалить</button>
+						<a class="btn btn_danger btn_outline" href="#" data-modal-close>Закрыть</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 	
 	<script src="assets/js/main.js"></script>
+	<script src="assets/js/modal.js"></script>
 </body>
 </html>

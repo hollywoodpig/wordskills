@@ -37,7 +37,7 @@
 							<option value="Что-нибудь">Что-нибудь</option>
 						</select>
 						<input required class="input" type="file" name="photo" accept="image/jpg, image/jpeg, image/png, image/bmp" placeholder="Фотография заявки">
-						<button class="btn">Войти</button>
+						<button class="btn">Добавить</button>
 					</form>
 				</div>
 			</div>
