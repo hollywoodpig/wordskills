@@ -334,6 +334,7 @@ th {
 	border: 1px solid var(--item-color);
 	border-radius: var(--bdrs-sm);
 	padding: 4rem 5rem;
+	transition: var(--trs) border-color;
 }
 
 .input::placeholder {
@@ -341,7 +342,7 @@ th {
 }
 
 .input_danger {
-	border: 1px solid var(--danger-color);
+	border-color: var(--danger-color);
 }
 
 /* form */

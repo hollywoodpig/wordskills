@@ -28,13 +28,19 @@
 					<h1 class="section__title">Городской портал - создать аккаунт</h1>
 				</div>
 				<div class="section__content">
+					<div class="alert alert_closed">
+						<div class="alert__content">
+							<span class="alert__text"></span>
+							<button class="btn-close">&times;</button>
+						</div>
+					</div>
+					<!-- создать аккаунт -->
 					<form class="form" id="register-form">
-						<input required name="name" type="text" class="input input_danger" placeholder="ФИО">
-						<p class="text-danger">ФИО должно быть заполнено.</p>
-						<input required name="login" type="text" class="input" placeholder="Логин">
-						<input required name="email" type="email" class="input" placeholder="Почта">
-						<input required name="password" type="password" class="input" placeholder="Пароль">
-						<input required name="password-repeat" type="password" class="input" placeholder="Повторите пароль">
+						<input name="name" id="name" type="text" class="input" placeholder="ФИО">
+						<input name="login" id="login" type="text" class="input" placeholder="Логин">
+						<input name="email" id="email" type="email" class="input" placeholder="Почта">
+						<input name="password" id="password" type="password" class="input" placeholder="Пароль">
+						<input name="password-repeat" id="password-repeat" type="password" class="input" placeholder="Повторите пароль">
 						<div class="label-checkbox">
 							<input type="checkbox" name="privacy" id="privacy">
 							<label for="privacy">Согласен на обработку персональных данных</label>
