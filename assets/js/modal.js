@@ -27,63 +27,46 @@ document.addEventListener('DOMContentLoaded', () => {
 		})
 	})
 
+	// utils
+
+	const passData = (triggers, attrToPass, InputToPass) => {
+
+		triggers.forEach(trigger => {
+			const id = trigger.getAttribute(attrToPass)
+	
+			trigger.addEventListener('click', e => {
+				e.preventDefault()
+	
+				InputToPass.value = id
+			})
+		})
+	}
+
 	// app cancel form
 
 	const appCancelTriggers = document.querySelectorAll('[data-modal-open="app-cancel"]')
+	const appCancelInput = document.getElementById('app-cancel-id')
 
-	appCancelTriggers.forEach(trigger => {
-		const id = trigger.getAttribute('data-app-id')
-
-		trigger.addEventListener('click', e => {
-			e.preventDefault()
-
-			const input = document.getElementById('app-cancel-id')
-			input.value = id
-		})
-	})
+	passData(appCancelTriggers, 'data-app-id', appCancelInput)
 
 	// app cancel form
 
 	const appApproveTriggers = document.querySelectorAll('[data-modal-open="app-approve"]')
+	const appApproveInput = document.getElementById('app-approve-id')
 
-	appApproveTriggers.forEach(trigger => {
-		const id = trigger.getAttribute('data-app-id')
+	passData(appApproveTriggers, 'data-app-id', appApproveInput)
 
-		trigger.addEventListener('click', e => {
-			e.preventDefault()
+	// app category delete form
 
-			const input = document.getElementById('app-approve-id')
-			input.value = id
-		})
-	})
+	const appCategoryDeleteTriggers = document.querySelectorAll('[data-modal-open="app-category-delete"]')
+	const appCategoryDeleteInput = document.getElementById('app-category-delete-id')
 
-		// app category delete form
+	passData(appCategoryDeleteTriggers, 'data-app-id', appCategoryDeleteInput)
 
-		const appCategoryDeleteTriggers = document.querySelectorAll('[data-modal-open="app-category-delete"]')
+	// app delete form
 
-		appCategoryDeleteTriggers.forEach(trigger => {
-			const id = trigger.getAttribute('data-app-id')
-	
-			trigger.addEventListener('click', e => {
-				e.preventDefault()
-	
-				const input = document.getElementById('app-category-delete-id')
-				input.value = id
-			})
-		})
+	const appDeleteTriggers = document.querySelectorAll('[data-modal-open="app-delete"]')
+	const appDeleteInput = document.getElementById('app-delete-id')
 
-		// app delete form
-
-		const appDeleteTriggers = document.querySelectorAll('[data-modal-open="app-delete"]')
-
-		appDeleteTriggers.forEach(trigger => {
-			const id = trigger.getAttribute('data-app-id')
-	
-			trigger.addEventListener('click', e => {
-				e.preventDefault()
-	
-				const input = document.getElementById('app-delete-id')
-				input.value = id
-			})
-		})
+	passData(appDeleteTriggers, 'data-app-id', appDeleteInput)
 })
