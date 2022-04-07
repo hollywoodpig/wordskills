@@ -1,3 +1,9 @@
+<?php
+	require $_SERVER['DOCUMENT_ROOT'] . '/models/User.php';
+
+	$user = new User();
+?>
+
 <!doctype html>
 <html lang="ru">
 <head>
@@ -14,8 +20,16 @@
 					<img class="logo__img" src="assets/img/logo-light.png" alt="">
 				</a>
 				<div class="header__inline">
-					<a href="login.php" class="btn">Войти</a>
-					<a href="register.php" class="btn btn_outline">Создать аккаунт</a>
+					<?php if($user->islogged()): ?>
+						<?php if($user->isAdmin()): ?>
+							<a href="admin.php" class="btn"><?= $user->get('name'); ?></a>
+						<?php else: ?>
+							<a href="profile.php" class="btn"><?= $user->get('name'); ?></a>
+						<?php endif; ?>
+					<?php else: ?>
+						<a href="login.php" class="btn">Войти</a>
+						<a href="register.php" class="btn btn_outline">Создать аккаунт</a>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>

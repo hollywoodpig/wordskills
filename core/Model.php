@@ -3,7 +3,11 @@
 		protected $db;
 
 		public function __construct() {
-			require 'database/database.php';
+			require $_SERVER['DOCUMENT_ROOT'] . '/database/database.php';
 			$this->db = $db;
+		}
+
+		public function redirect($path) {
+			header("Location: /$path");
 		}
 	}

@@ -1,3 +1,12 @@
+<?php
+	require $_SERVER['DOCUMENT_ROOT'] . '/models/User.php';
+
+	$user = new User();
+
+	if (!$user->isLogged()) return $user->redirect('index.php');
+	if ($user->isAdmin()) return $user->redirect('admin.php');
+?>
+
 <!doctype html>
 <html lang="ru">
 <head>
@@ -15,7 +24,7 @@
 				</a>
 				<div class="header__inline">
 					<a href="appAdd.php" class="btn">Создать заявку</a>
-					<a href="api/logout.php" class="btn btn_outline">Выйти</a>
+					<a href="actions/logout.php" class="btn btn_outline">Выйти</a>
 				</div>
 			</div>
 		</div>

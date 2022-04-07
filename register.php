@@ -1,16 +1,21 @@
 <?php
-	require 'models/Auth.php';
+	require $_SERVER['DOCUMENT_ROOT'] . '/models/User.php';
 
-	$auth = new Auth();
+	$user = new User();
 
-	$name = $_POST['name'];
-	$login = $_POST['login'];
-	$email = $_POST['email'];
-	$password = $_POST['password'];
-	$submit = $_POST['submit'];
+	if ($user->isLogged()) return $user->redirect('profile.php');
+	if ($user->isAdmin()) return $user->redirect('admin.php');
 
-	if (isset($submit)) {
-		$auth->register($name, $login, $email, $password);
+	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+		$name = $_POST['name'];
+		$login = $_POST['login'];
+		$email = $_POST['email'];
+		$password = $_POST['password'];
+		$submit = $_POST['submit'];
+	
+		if (isset($submit)) {
+			$user->register($name, $login, $email, $password);
+		}
 	}
 ?>
 

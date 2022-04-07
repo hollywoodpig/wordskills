@@ -1,5 +1,5 @@
 <?php
-	require 'core/Model.php';
+	require $_SERVER['DOCUMENT_ROOT'] . '/core/Model.php';
 
 	class App extends Model {
 		public function test() {
