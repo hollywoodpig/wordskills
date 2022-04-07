@@ -83,7 +83,7 @@
 				<button class="btn-close" data-modal-close>&times;</button>
 			</div>
 			<div class="modal__content">
-				<p>Все заявки с данной категорией будут безвозвратно удалены.</p>
+				<p>Все заявки с данной категорией будут удалены.</p>
 				<form style="width: 100%;">
 					<input type="hidden" name="app-category-delete-id" id="app-category-delete-id">
 					<div class="inline inline_grow">

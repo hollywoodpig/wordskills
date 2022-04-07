@@ -13,7 +13,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="assets/css/main.css">
-	<title>Городской портал - Администратор</title>
+	<title>Городской портал - <?= $user->get('name') ?></title>
 </head>
 <body>
 	<header class="header">
@@ -34,7 +34,7 @@
 		<section class="section">
 			<div class="container">
 				<div class="section__heading">
-					<h1 class="section__title">Добро пожаловать, Администратор. Вот список всех заявок на сайте:</h1>
+					<h1 class="section__title">Добро пожаловать, <?= $user->get('name') ?>. Вот список всех заявок на сайте:</h1>
 				</div>
 				<div class="section__content">
 					<!-- все заявки -->
