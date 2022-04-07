@@ -17,7 +17,7 @@
 		$name = $_POST['name'];
 		$text = $_POST['text'];
 		$photo = file_get_contents($_FILES['photo']['tmp_name']);
-		$created = '0000';
+		$created = date('d.m.Y H:i');
 
 		$appModel->addApp($userId, $catId, $name, $text, $photo, $created);
 	}
