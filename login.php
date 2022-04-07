@@ -6,13 +6,15 @@
 	if ($user->isLogged()) return $user->redirect('profile.php');
 	if ($user->isAdmin()) return $user->redirect('admin.php');
 
+	$isError = false;
+
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$login = $_POST['login'];
 		$password = $_POST['password'];
 		$submit = $_POST['submit'];
 	
 		if (isset($submit)) {
-			$user->login($login, $password);
+			$isError = !$user->login($login, $password);
 		}
 	}
 ?>
@@ -47,12 +49,14 @@
 					<h1 class="section__title">Городской портал - войти</h1>
 				</div>
 				<div class="section__content">
-					<!-- <div class="alert">
-						<div class="alert__content">
-							<span class="alert__text"></span>
-							<button class="btn-close">&times;</button>
+					<?php if($isError): ?>
+						<div class="alert">
+							<div class="alert__content">
+								<span class="alert__text">Неправильная пара логин-пароль</span>
+								<button class="btn-close">&times;</button>
+							</div>
 						</div>
-					</div> -->
+					<?php endif; ?>
 					<form class="form-inline" method="post">
 						<input required name="login" type="text" class="input" placeholder="Логин">
 						<input required name="password" type="password" class="input" placeholder="Пароль">

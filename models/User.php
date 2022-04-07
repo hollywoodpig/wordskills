@@ -32,6 +32,8 @@
 				if ($this->isAdmin()) return $this->redirect('admin.php');
 				if (!$this->isAdmin()) return $this->redirect('profile.php');
 			}
+
+			return false;
 		}
 
 		// logout
