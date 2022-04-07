@@ -13,10 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	const alertText = alert.querySelector('.alert__text')
 
 	// utils
-	
-	const error = (e, text, elem) => {
-		e.preventDefault()
 
+	const error = (text, elem) => {
 		alert.classList.remove('alert_closed')
 		alertText.textContent = text
 
@@ -28,16 +26,38 @@ document.addEventListener('DOMContentLoaded', () => {
 		elem.classList.remove('input_danger')
 	}
 
+	const getloginUnique = async login => {
+		return fetch('/api/loginUnique.php', {
+			method: 'POST',
+			body: JSON.stringify({ login })
+		})
+			.then(res => res.json())
+			.then(data => data)
+	}
+
+	const register = async (name, login, email, password) => {
+		return fetch('/actions/register.php', {
+			method: 'POST',
+			body: JSON.stringify({
+				name,
+				login,
+				email,
+				password
+			})
+		})
+	}
+
 	// validate
 
-	form.addEventListener('submit', e => {
+	const validate = async e => {
+		e.preventDefault()
 
 		// name
 
 		const isNameCorrect = /[а-яА-ЯЁё]+[\s-]+[а-яА-ЯЁё]+[\s-]+[а-яА-ЯЁё]/.test(name.value)
 
 		if (!isNameCorrect) {
-			error(e, 'ФИО заполнено некорректно. ФИО должны быть на кириллице и разделяться пробелами или дефисами.', name)
+			error('ФИО заполнено некорректно. ФИО должны быть на кириллице и разделяться пробелами или дефисами.', name)
 			return
 		} else {
 			restore(name)
@@ -45,14 +65,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		// login
 
-		const isLoginLatin = /^[a-zA-Z0-9]+$/.test(login.value);
-		const isLoginUnique = true; // давайте представим что тут обращение к серверу
-
+		const isLoginLatin = /^[a-zA-Z0-9]+$/.test(login.value)
+		const { isLoginUnique } = await getloginUnique(login.value)
+		
 		if (!isLoginLatin) {
-			error(e, 'Логин заполнен некорректно. У логина должны использоваться только латинские символы.', login)
+			error('Логин заполнен некорректно. У логина должны использоваться только латинские символы.', login)
 			return
 		} else if (!isLoginUnique) {
-			error(e, 'Логин должен быть уникальным. Попробуйте ввести что-то другое.', login)
+			error('Логин должен быть уникальным. Попробуйте ввести что-то другое.', login)
 			return
 		} else {
 			restore(login)
@@ -63,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		const isEmailCorrect = /\S+@\S+\.\S+/.test(email.value)
 
 		if (!isEmailCorrect) {
-			error(e, 'Почта введена некорректно. Проверьте правильность написания.', email)
+			error('Почта введена некорректно. Проверьте правильность написания.', email)
 			return
 		} else {
 			restore(email)
@@ -72,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		// password
 
 		if (!password.value) {
-			error(e, 'Пароль не может быть пустым...', password)
+			error('Пароль не может быть пустым...', password)
 			return
 		} else {
 			restore(password)
@@ -83,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		const passwordsMatch = password.value === passwordRepeat.value
 
 		if (!passwordsMatch) {
-			error(e, 'Пароли не совпадают. Проверьте правильность их написания.', passwordRepeat)
+			error('Пароли не совпадают. Проверьте правильность их написания.', passwordRepeat)
 			return
 		} else {
 			restore(passwordRepeat)
@@ -92,8 +112,17 @@ document.addEventListener('DOMContentLoaded', () => {
 		// privacy
 
 		if (!privacy.checked) {
-			error(e, 'Пожалуйста, согласитесь на продажу ваших данных.')
+			error('Пожалуйста, согласитесь на продажу ваших данных.')
 			return
 		}
+
+		// submit
+
+		register(name.value, login.value, email.value, password.value)
+		window.location.href = '/login.php'
+	}
+
+	form.addEventListener('submit', e => {
+		validate(e)
 	})
 })

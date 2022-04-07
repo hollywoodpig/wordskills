@@ -6,17 +6,17 @@
 	if ($userModel->isLogged()) return $userModel->redirect('profile.php');
 	if ($userModel->isAdmin()) return $userModel->redirect('admin.php');
 
-	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-		$name = $_POST['name'];
-		$login = $_POST['login'];
-		$email = $_POST['email'];
-		$password = $_POST['password'];
-		$submit = $_POST['submit'];
+	// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+	// 	$name = $_POST['name'];
+	// 	$login = $_POST['login'];
+	// 	$email = $_POST['email'];
+	// 	$password = $_POST['password'];
+	// 	$submit = $_POST['submit'];
 	
-		if (isset($submit)) {
-			$userModel->register($name, $login, $email, $password);
-		}
-	}
+	// 	if (isset($submit)) {
+	// 		$userModel->register($name, $login, $email, $password);
+	// 	}
+	// }
 ?>
 
 <!doctype html>

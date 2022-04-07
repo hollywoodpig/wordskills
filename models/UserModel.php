@@ -64,6 +64,17 @@
 			return false;
 		}
 
+		// is login unique
+
+		public function isLoginUnique($login) {
+			$query = $this->db->prepare('select count(login) from users where login = :login');
+			$query->execute(['login' => $login]);
+
+			$count = $query->fetchColumn();
+
+			return $count > 0 ? false : true; 
+		}
+
 		// get field
 
 		public function get($field) {
