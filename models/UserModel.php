@@ -1,7 +1,7 @@
 <?php
-	require $_SERVER['DOCUMENT_ROOT'] . '/core/Model.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/core/Model.php';
 
-	class User extends Model {
+	class UserModel extends Model {
 
 		// start session
 
@@ -74,6 +74,19 @@
 				$query->execute(['id' => $userId]);
 	
 				return $query->fetchColumn();
+			}
+		}
+
+		// get apps
+
+		public function getApps() {
+			if ($this->isLogged()) {
+				$userId = $_SESSION['user']['id'];
+
+				$query = $this->db->prepare('select * from apps where user_id = :id');
+				$query->execute(['id' => $userId]);
+
+				return $query->fetchAll();
 			}
 		}
 	}

@@ -1,3 +1,28 @@
+<?php
+	require $_SERVER['DOCUMENT_ROOT'] . '/models/UserModel.php';
+	require $_SERVER['DOCUMENT_ROOT'] . '/models/AppModel.php';
+
+	$userModel = new UserModel();
+
+	if (!$userModel->isLogged()) return $userModel->redirect('index.php');
+	if ($userModel->isAdmin()) return $userModel->redirect('admin.php');
+
+	$appModel = new AppModel();
+
+	$appCats = $appModel->getCats();
+
+	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+		$userId = $userModel->get('id');
+		$catId = $_POST['cat-id'];
+		$name = $_POST['name'];
+		$text = $_POST['text'];
+		$photo = file_get_contents($_FILES['photo']['tmp_name']);
+		$created = '0000';
+
+		$appModel->addApp($userId, $catId, $name, $text, $photo, $created);
+	}
+?>
+
 <!doctype html>
 <html lang="ru">
 <head>
@@ -14,7 +39,7 @@
 					<img class="logo__img" src="assets/img/logo-light.png" alt="">
 				</a>
 				<div class="header__inline">
-					<a href="profile.php" class="btn">Anon</a>
+					<a href="profile.php" class="btn"><?= $userModel->get('name') ?></a>
 				</div>
 			</div>
 		</div>
@@ -27,14 +52,13 @@
 					<h1 class="section__title">Добавление заявки</h1>
 				</div>
 				<div class="section__content">
-					<form class="form" enctype="multipart/form-data">
-						<input required name="title" type="text" class="input input_danger" placeholder="Название заявки">
+					<form class="form" method="post" enctype="multipart/form-data">
+						<input required name="name" type="text" class="input" placeholder="Название заявки">
 						<textarea required name="text" class="input" placeholder="Описание заявки"></textarea>
-						<select required name="category" class="input">
-							<option disabled selected>Категория заявки</option>
-							<option value="Коты">Коты</option>
-							<option value="Не коты">Не коты</option>
-							<option value="Что-нибудь">Что-нибудь</option>
+						<select required name="cat-id" class="input">
+							<?php foreach($appCats as $cat): ?>
+								<option value="<?= $cat['id'] ?>"><?= $cat['name'] ?></option>
+							<?php endforeach; ?>
 						</select>
 						<input required class="input" type="file" name="photo" accept="image/jpg, image/jpeg, image/png, image/bmp" placeholder="Фотография заявки">
 						<button class="btn">Добавить</button>

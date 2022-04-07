@@ -1,7 +1,7 @@
 <?php
-	require $_SERVER['DOCUMENT_ROOT'] . '/models/User.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/models/UserModel.php';
 
-	$user = new User();
+	$userModel = new UserModel();
 ?>
 
 <!doctype html>
@@ -20,11 +20,11 @@
 					<img class="logo__img" src="assets/img/logo-light.png" alt="">
 				</a>
 				<div class="header__inline">
-					<?php if($user->islogged()): ?>
-						<?php if($user->isAdmin()): ?>
-							<a href="admin.php" class="btn"><?= $user->get('name'); ?></a>
+					<?php if($userModel->islogged()): ?>
+						<?php if($userModel->isAdmin()): ?>
+							<a href="admin.php" class="btn"><?= $userModel->get('name'); ?></a>
 						<?php else: ?>
-							<a href="profile.php" class="btn"><?= $user->get('name'); ?></a>
+							<a href="profile.php" class="btn"><?= $userModel->get('name'); ?></a>
 						<?php endif; ?>
 					<?php else: ?>
 						<a href="login.php" class="btn">Войти</a>

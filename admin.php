@@ -1,10 +1,16 @@
 <?php
-	require $_SERVER['DOCUMENT_ROOT'] . '/models/User.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/models/UserModel.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/models/AppModel.php';
 
-	$user = new User();
+	$userModel = new UserModel();
 	
-	if (!$user->isLogged()) return $user->redirect('index.php');
-	if (!$user->isAdmin()) return $user->redirect('profile.php');
+	if (!$userModel->isLogged()) return $userModel->redirect('index.php');
+	if (!$userModel->isAdmin()) return $userModel->redirect('profile.php');
+
+	$appModel = new AppModel();
+
+	$apps = $appModel->getAll();
+	$appsNotEmpty = !empty($apps);
 ?>
 
 <!doctype html>
@@ -13,7 +19,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="assets/css/main.css">
-	<title>Городской портал - <?= $user->get('name') ?></title>
+	<title>Городской портал - <?= $userModel->get('name') ?></title>
 </head>
 <body>
 	<header class="header">
@@ -34,70 +40,40 @@
 		<section class="section">
 			<div class="container">
 				<div class="section__heading">
-					<h1 class="section__title">Добро пожаловать, <?= $user->get('name') ?>. Вот список всех заявок на сайте:</h1>
+					<h1 class="section__title">Добро пожаловать, <?= $userModel->get('name') ?>. Вот список всех заявок на сайте:</h1>
 				</div>
 				<div class="section__content">
-					<!-- все заявки -->
-					<div class="table">
-						<table>
-							<tbody>
-								<!-- заголовки таблицы -->
-								<tr>
-									<th>№</th>
-									<th>Название</th>
-									<th>Статус</th>
-									<th>Категория</th>
-									<th>Время</th>
-									<th>Описание</th>
-									<th colspan="2">Действие</th>
-								</tr>
-								<!-- 1 ряд -->
-								<tr>
-									<td>1</td>
-									<td>Убейте меня пожалуйста</td>
-									<td>Отклонена</td>
-									<td>Суицид</td>
-									<td>19.06.18</td>
-									<td>Help me, i ain't got no brains, i can feel no pain</td>
-									<td><a href="#" class="link link_disabled">Одобрить</a></td>
-									<td><a href="#" class="link link_disabled">Отклонить</a></td>
-								</tr>
-								<!-- 2 ряд -->
-								<tr>
-									<td>2</td>
-									<td>Убейте меня пожалуйста</td>
-									<td>Решено</td>
-									<td>Суицид</td>
-									<td>19.06.18</td>
-									<td>Help me, i ain't got no brains, i can feel no pain</td>
-									<td><a href="#" class="link link_disabled">Одобрить</a></td>
-									<td><a href="#" class="link link_disabled">Отклонить</a></td>
-								</tr>
-								<!-- 3 ряд -->
-								<tr>
-									<td>3</td>
-									<td>Убейте меня пожалуйста</td>
-									<td>Новая</td>
-									<td>Суицид</td>
-									<td>19.06.18</td>
-									<td>Help me, i ain't got no brains, i can feel no pain</td>
-									<td><a href="#" data-modal-open="app-approve" data-app-id="3" class="link">Одобрить</a></td>
-									<td><a href="#" data-modal-open="app-cancel" data-app-id="3" class="link link_danger">Отклонить</a></td>
-								</tr>
-								<!-- 4 ряд -->
-								<tr>
-									<td>4</td>
-									<td>Убейте меня пожалуйста</td>
-									<td>Новая</td>
-									<td>Суицид</td>
-									<td>19.06.18</td>
-									<td>Help me, i ain't got no brains, i can feel no pain</td>
-									<td><a href="#" data-modal-open="app-approve" data-app-id="4" class="link">Одобрить</a></td>
-									<td><a href="#" data-modal-open="app-cancel" data-app-id="4" class="link link_danger">Отклонить</a></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+					<?php if($appsNotEmpty): ?>
+						<div class="table">
+							<table>
+								<tbody>
+									<tr>
+										<th>№</th>
+										<th>Название</th>
+										<th>Статус</th>
+										<th>Категория</th>
+										<th>Время</th>
+										<th>Описание</th>
+										<th colspan="2">Действие</th>
+									</tr>
+									<?php foreach($apps as $app): ?>
+										<tr>
+											<td><?= $app['id'] ?></td>
+											<td><?= $app['name'] ?></td>
+											<td><?= $app['status'] ?></td>
+											<td><?= $appModel->getCat($app['cat_id']); ?></td>
+											<td><?= $app['created'] ?></td>
+											<td><?= $app['text'] ?></td>
+											<td><a href="#" data-modal-open="app-approve" data-app-id="<?= $app['id'] ?>" class="link">Одобрить</a></td>
+											<td><a href="#" data-modal-open="app-cancel" data-app-id="<?= $app['id'] ?>" class="link link_danger">Отклонить</a></td>
+										</tr>
+									<?php endforeach; ?>
+								</tbody>
+							</table>
+						</div>
+					<?php else: ?>
+						<p>Заявок от пользователей пока нет. Как насчет лучше продвигать сайт?</p>
+					<?php endif; ?>
 				</div>
 			</div>
 		</section>

@@ -29,21 +29,22 @@
 
 		// create apps table
 
-		$db->query('
+		$db->query("
 			create table if not exists apps (
 				id int auto_increment primary key,
 				user_id int,
 				cat_id int,
 				name varchar(255),
 				text varchar(255),
-				status varchar(255),
-				photo varchar(255),
-				photo_after varchar(255),
+				status varchar(255) default 'Новая',
+				reason varchar(255),
+				photo longblob,
+				photo_after longblob,
 				created varchar(255),
 				index (user_id),
 				index (cat_id),
 				foreign key (user_id) references users(id) on delete cascade on update cascade,
 				foreign key (cat_id) references app_cats(id) on delete cascade on update cascade
 			)
-		');
+		");
 	}

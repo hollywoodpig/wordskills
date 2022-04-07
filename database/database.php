@@ -1,5 +1,6 @@
 <?php
-	require 'setupDatabase.php';
+	require_once 'setupDatabase.php';
+	require_once 'fillDatabase.php';
 
 	try {
 		$db = new PDO('mysql:host=localhost', 'root', 'root', [
@@ -7,10 +8,7 @@
 		]);
 
 		setupDatabase($db);
-
-		// create admin user
-
-		// $db->query('insert into users (name, login, email, password, admin) values ("зубенко михаил петрович", "admin", "admin@admin.admin", "adminWSR", 1)');
+		// fillDatabase($db);
 	} catch(PDOException $e) {
 		echo $e;
 	}

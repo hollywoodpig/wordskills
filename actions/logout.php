@@ -1,5 +1,5 @@
 <?php
-	require $_SERVER['DOCUMENT_ROOT'] . '/models/User.php';
+	require $_SERVER['DOCUMENT_ROOT'] . '/models/UserModel.php';
 
-	$user = new User();
-	$user->logout();
+	$userModel = new UserModel();
+	$userModel->logout();

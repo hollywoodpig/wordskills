@@ -1,10 +1,15 @@
 <?php
-	require $_SERVER['DOCUMENT_ROOT'] . '/models/User.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/models/UserModel.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/models/AppModel.php';
 
-	$user = new User();
+	$userModel = new UserModel();
+	$appModel = new AppModel();
 
-	if (!$user->isLogged()) return $user->redirect('index.php');
-	if ($user->isAdmin()) return $user->redirect('admin.php');
+	if (!$userModel->isLogged()) return $userModel->redirect('index.php');
+	if ($userModel->isAdmin()) return $userModel->redirect('admin.php');
+
+	$apps = $userModel->getApps();
+	$appsNotNull = !empty($apps);
 ?>
 
 <!doctype html>
@@ -13,7 +18,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="assets/css/main.css">
-	<title>Профиль <?= $user->get('name'); ?></title>
+	<title>Профиль <?= $userModel->get('name'); ?></title>
 </head>
 <body>
 	<header class="header">
@@ -34,7 +39,7 @@
 		<section class="section">
 			<div class="container">
 				<div class="section__heading">
-					<h1 class="section__title">Добро пожаловать, <?= $user->get('name'); ?>. Вот ваши заявки:</h1>
+					<h1 class="section__title">Добро пожаловать, <?= $userModel->get('name'); ?>. Вот ваши заявки:</h1>
 				</div>
 				<div class="section__content">
 					<!-- фильтр -->
@@ -50,62 +55,36 @@
 						</form>
 					</div>
 					<!-- заявки пользователя -->
-					<div class="table">
-						<table>
-							<tbody>
-								<!-- заголовки таблицы -->
-								<tr>
-									<th>№</th>
-									<th>Название</th>
-									<th>Статус</th>
-									<th>Категория</th>
-									<th>Время</th>
-									<th>Описание</th>
-									<th>Действие</th>
-								</tr>
-								<!-- 1 ряд -->
-								<tr>
-									<td><p class="">1</p></td>
-									<td><p class="">Убейте меня пожалуйста</a></td>
-									<td><p class="">Отклонена</p></td>
-									<td><p class="">Суицид</p></td>
-									<td><p class="">19.06.18</p></td>
-									<td><p class="">Help me, i ain't got no brains, i can feel no pain</p></td>
-									<td><a href="#" class="link link_disabled">Удалить</a></td>
-								</tr>
-								<!-- 2 ряд -->
-								<tr>
-									<td><p class="">2</p></td>
-									<td><p class="">Убейте меня пожалуйста</a></td>
-									<td><p class="">Новая</p></td>
-									<td><p class="">Суицид</p></td>
-									<td><p class="">19.06.18</p></td>
-									<td><p class="">Help me, i ain't got no brains, i can feel no pain</p></td>
-									<td><a href="#" data-modal-open="app-delete" data-app-id="2" class="link link_danger">Удалить</a></td>
-								</tr>
-								<!-- 3 ряд -->
-								<tr>
-									<td><p class="">3</p></td>
-									<td><p class="">Убейте меня пожалуйста</a></td>
-									<td><p class="">Новая</p></td>
-									<td><p class="">Суицид</p></td>
-									<td><p class="">19.06.18</p></td>
-									<td><p class="">Help me, i ain't got no brains, i can feel no pain</p></td>
-									<td><a href="#" data-modal-open="app-delete" data-app-id="3" class="link link_danger">Удалить</a></td>
-								</tr>
-								<!-- 4 ряд -->
-								<tr>
-									<td><p class="">4</p></td>
-									<td><p class="">Убейте меня пожалуйста</a></td>
-									<td><p class="">Новая</p></td>
-									<td><p class="">Суицид</p></td>
-									<td><p class="">19.06.18</p></td>
-									<td><p class="">Help me, i ain't got no brains, i can feel no pain</p></td>
-									<td><a href="#" data-modal-open="app-delete" data-app-id="4" class="link link_danger">Удалить</a></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+					<?php if ($appsNotNull): ?>
+						<div class="table">
+							<table>
+								<tbody>
+									<tr>
+										<th>№</th>
+										<th>Название</th>
+										<th>Статус</th>
+										<th>Категория</th>
+										<th>Время</th>
+										<th>Описание</th>
+										<th>Действие</th>
+									</tr>
+									<?php foreach($apps as $app): ?>
+										<tr>
+											<td><?= $app['id'] ?></td>
+											<td><?= $app['name'] ?></td>
+											<td><?= $app['status'] ?></td>
+											<td><?= $appModel->getCat($app['cat_id']) ?></td>
+											<td><?= $app['created'] ?></td>
+											<td><?= $app['text'] ?></td>
+											<td><a href="#" data-modal-open="app-delete" data-app-id="<?= $app['id'] ?>" class="link link_danger">Удалить</a></td>
+										</tr>
+									<?php endforeach; ?>
+								</tbody>
+							</table>
+						</div>
+					<?php else: ?>
+						<p>У вас пока нет заявок. Как насчет создать одну?</p>
+					<?php endif; ?>
 				</div>
 			</div>
 		</section>

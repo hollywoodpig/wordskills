@@ -1,10 +1,10 @@
 <?php
-	require $_SERVER['DOCUMENT_ROOT'] . '/models/User.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/models/UserModel.php';
 
-	$user = new User();
+	$userModel = new UserModel();
 
-	if ($user->isLogged()) return $user->redirect('profile.php');
-	if ($user->isAdmin()) return $user->redirect('admin.php');
+	if ($userModel->isLogged()) return $userModel->redirect('profile.php');
+	if ($userModel->isAdmin()) return $userModel->redirect('admin.php');
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$name = $_POST['name'];
@@ -14,7 +14,7 @@
 		$submit = $_POST['submit'];
 	
 		if (isset($submit)) {
-			$user->register($name, $login, $email, $password);
+			$userModel->register($name, $login, $email, $password);
 		}
 	}
 ?>
