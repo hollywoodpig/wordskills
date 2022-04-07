@@ -1,3 +1,19 @@
+<?php
+	require 'models/Auth.php';
+
+	$auth = new Auth();
+
+	$name = $_POST['name'];
+	$login = $_POST['login'];
+	$email = $_POST['email'];
+	$password = $_POST['password'];
+	$submit = $_POST['submit'];
+
+	if (isset($submit)) {
+		$auth->register($name, $login, $email, $password);
+	}
+?>
+
 <!doctype html>
 <html lang="ru">
 <head>
@@ -35,7 +51,7 @@
 						</div>
 					</div>
 					<!-- создать аккаунт -->
-					<form class="form" id="register-form">
+					<form class="form" method="post" id="register-form">
 						<input name="name" id="name" type="text" class="input" placeholder="ФИО">
 						<input name="login" id="login" type="text" class="input" placeholder="Логин">
 						<input name="email" id="email" type="email" class="input" placeholder="Почта">
@@ -45,7 +61,7 @@
 							<input type="checkbox" name="privacy" id="privacy">
 							<label for="privacy">Согласен на обработку персональных данных</label>
 						</div>
-						<button class="btn">Войти</button>
+						<button name="submit" class="btn">Создать аккаунт</button>
 					</form>
 				</div>
 			</div>

@@ -18,6 +18,15 @@
 			)
 		');
 
+		// create app cats table
+
+		$db->query('
+			create table if not exists app_cats (
+				id int auto_increment primary key,
+				name varchar(255)
+			)
+		');
+
 		// create apps table
 
 		$db->query('
@@ -30,25 +39,11 @@
 				status varchar(255),
 				photo varchar(255),
 				photo_after varchar(255),
-				created varchar(255)
+				created varchar(255),
+				index (user_id),
+				index (cat_id),
+				foreign key (user_id) references users(id) on delete cascade on update cascade,
+				foreign key (cat_id) references app_cats(id) on delete cascade on update cascade
 			)
 		');
-
-		// create app cats table
-
-		$db->query('
-			create table if not exists app_cats (
-				id int auto_increment primary key,
-				name varchar(255)
-			)
-		');
-
-		// create relations
-
-		$db->query('alter table apps add index (user_id), add foreign key (user_id) references users(id) on delete cascade on update cascade');
-		$db->query('alter table apps add index (cat_id), add foreign key (cat_id) references app_cats(id) on delete cascade on update cascade');
-
-		// create admin user
-
-		$db->query('insert into users (id, name, login, email, password, admin) values (null, "зубенко михаил петрович", "admin", "admin@admin.admin", "adminWSR", 1)');
 	}

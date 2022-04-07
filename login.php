@@ -36,10 +36,10 @@
 							<button class="btn-close">&times;</button>
 						</div>
 					</div>
-					<form class="form-inline">
+					<form class="form-inline" method="post">
 						<input required name="login" type="text" class="input" placeholder="Логин">
 						<input required name="password" type="password" class="input" placeholder="Пароль">
-						<button class="btn">Войти</button>
+						<button name="submit" class="btn">Войти</button>
 					</form>
 				</div>
 			</div>

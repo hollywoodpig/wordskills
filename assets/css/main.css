@@ -268,9 +268,13 @@ th {
 	transition: var(--trs) box-shadow;
 }
 
-.btn:hover, .btn:focus {
+.btn:hover {
 	box-shadow: 0 0 0 2rem var(--btn-hover-bg);
 	text-decoration: underline;
+}
+
+.btn:focus {
+	outline: var(--btn-hover-bg) solid;
 }
 
 .btn_outline {

@@ -7,6 +7,10 @@
 		]);
 
 		setupDatabase($db);
+
+		// create admin user
+
+		// $db->query('insert into users (name, login, email, password, admin) values ("зубенко михаил петрович", "admin", "admin@admin.admin", "adminWSR", 1)');
 	} catch(PDOException $e) {
 		echo $e;
 	}
