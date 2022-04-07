@@ -37,7 +37,7 @@
 		<div class="container">
 			<div class="header__content">
 				<a href="index.php" class="logo">
-					<img class="logo__img" src="assets/img/logo-light.png" alt="">
+					<img class="logo__img" src="logo/logo.png" alt="">
 				</a>
 				<div class="header__inline">
 					<a href="profile.php" class="btn"><?= $userModel->get('name') ?></a>

@@ -5,18 +5,6 @@
 
 	if ($userModel->isLogged()) return $userModel->redirect('profile.php');
 	if ($userModel->isAdmin()) return $userModel->redirect('admin.php');
-
-	// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	// 	$name = $_POST['name'];
-	// 	$login = $_POST['login'];
-	// 	$email = $_POST['email'];
-	// 	$password = $_POST['password'];
-	// 	$submit = $_POST['submit'];
-	
-	// 	if (isset($submit)) {
-	// 		$userModel->register($name, $login, $email, $password);
-	// 	}
-	// }
 ?>
 
 <!doctype html>
@@ -32,7 +20,7 @@
 		<div class="container">
 			<div class="header__content">
 				<a href="index.php" class="logo">
-					<img class="logo__img" src="assets/img/logo-light.png" alt="">
+					<img class="logo__img" src="logo/logo.png" alt="">
 				</a>
 				<div class="header__inline">
 					<a href="login.php" class="btn">Войти</a>
