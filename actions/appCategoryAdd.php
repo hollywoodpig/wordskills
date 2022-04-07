@@ -14,6 +14,5 @@
 		$name = $_POST['name'];
 
 		$appModel->addCat($name);
-
 		$userModel->redirect('appCategory.php');
 	}

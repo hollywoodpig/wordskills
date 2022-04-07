@@ -20,6 +20,7 @@
 		$created = date('d.m.Y H:i');
 
 		$appModel->addApp($userId, $catId, $name, $text, $photo, $created);
+		$appModel->redirect('profile.php');
 	}
 ?>
 

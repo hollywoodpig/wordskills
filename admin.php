@@ -48,7 +48,6 @@
 							<table>
 								<tbody>
 									<tr>
-										<th>№</th>
 										<th>Название</th>
 										<th>Статус</th>
 										<th>Категория</th>
@@ -58,7 +57,6 @@
 									</tr>
 									<?php foreach($apps as $app): ?>
 										<tr>
-											<td><?= $app['id'] ?></td>
 											<td><?= $app['name'] ?></td>
 											<td><?= $app['status'] ?></td>
 											<td><?= $appModel->getCat($app['cat_id']); ?></td>

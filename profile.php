@@ -18,7 +18,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="assets/css/main.css">
-	<title>Профиль <?= $userModel->get('name'); ?></title>
+	<title>Городской портал - <?= $userModel->get('name'); ?></title>
 </head>
 <body>
 	<header class="header">
@@ -60,7 +60,6 @@
 							<table>
 								<tbody>
 									<tr>
-										<th>№</th>
 										<th>Название</th>
 										<th>Статус</th>
 										<th>Категория</th>
@@ -70,7 +69,6 @@
 									</tr>
 									<?php foreach($apps as $app): ?>
 										<tr>
-											<td><?= $app['id'] ?></td>
 											<td><?= $app['name'] ?></td>
 											<td><?= $app['status'] ?></td>
 											<td><?= $appModel->getCat($app['cat_id']) ?></td>
@@ -106,7 +104,7 @@
 			</div>
 			<div class="modal__content">
 				<p>Данное действие нельзя будет отменить.</p>
-				<form style="width: 100%;">
+				<form style="width: 100%;" method="post" action="actions/appDelete.php">
 					<input type="hidden" name="app-delete-id" id="app-delete-id">
 					<div class="inline inline_grow">
 						<button class="btn btn_danger">Удалить</button>

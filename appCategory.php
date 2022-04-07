@@ -54,13 +54,11 @@
 							<table>
 								<tbody>
 									<tr>
-										<th>№</th>
 										<th>Название</th>
 										<th>Действие</th>
 									</tr>
 									<?php foreach($appCats as $cat): ?>
 										<tr>
-											<td><?= $cat['id'] ?></td>
 											<td><?= $cat['name'] ?></td>
 											<td><a href="#" data-modal-open="app-category-delete" data-app-id="<?= $cat['id'] ?>" class="link link_danger">Удалить</a></td>
 										</tr>
@@ -92,7 +90,7 @@
 			</div>
 			<div class="modal__content">
 				<p>Все заявки с данной категорией будут удалены.</p>
-				<form style="width: 100%;">
+				<form style="width: 100%;" method="post" action="actions/appCategoryDelete.php">
 					<input type="hidden" name="app-category-delete-id" id="app-category-delete-id">
 					<div class="inline inline_grow">
 						<button class="btn btn_danger">Удалить</button>
