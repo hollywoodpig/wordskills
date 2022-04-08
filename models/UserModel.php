@@ -78,26 +78,22 @@
 		// get field
 
 		public function get($field) {
-			if ($this->isLogged()) {
-				$userId = $_SESSION['user']['id'];
+			$userId = $_SESSION['user']['id'];
 
-				$query = $this->db->prepare("select $field from users where id = :id");
-				$query->execute(['id' => $userId]);
-	
-				return $query->fetchColumn();
-			}
+			$query = $this->db->prepare("select $field from users where id = :id");
+			$query->execute(['id' => $userId]);
+
+			return $query->fetchColumn();
 		}
 
 		// get apps
 
 		public function getApps() {
-			if ($this->isLogged()) {
-				$userId = $_SESSION['user']['id'];
+			$userId = $_SESSION['user']['id'];
 
-				$query = $this->db->prepare('select * from apps where user_id = :id');
-				$query->execute(['id' => $userId]);
+			$query = $this->db->prepare('select * from apps where user_id = :id');
+			$query->execute(['id' => $userId]);
 
-				return $query->fetchAll();
-			}
+			return $query->fetchAll();
 		}
 	}

@@ -56,14 +56,31 @@
 										<th colspan="2">Действие</th>
 									</tr>
 									<?php foreach($apps as $app): ?>
+										<?php
+											$notNew = $appModel->getField('status', $app['id']) != 'Новая';
+											$isApproved = $appModel->getField('status', $app['id']) == 'Решена';
+											$isCancel = $appModel->getField('status', $app['id']) == 'Отклонена';
+
+											$color = '';
+
+											if ($isApproved) {
+												$color = 'text-accent';
+											} elseif ($isCancel) {
+												$color = 'text-danger';
+											}
+										?>
+
 										<tr>
 											<td><?= $app['name'] ?></td>
-											<td><?= $app['status'] ?></td>
+											<td>
+												<p class="<?= $color ?>"><?= $app['status'] ?></p>
+												<p><?= $isCancel ? 'Причина: ' . $app['reason'] : '' ?></p>
+											</td>
 											<td><?= $appModel->getCat($app['cat_id']); ?></td>
 											<td><?= $app['created'] ?></td>
 											<td><?= $app['text'] ?></td>
-											<td><a href="#" data-modal-open="app-approve" data-app-id="<?= $app['id'] ?>" class="link">Одобрить</a></td>
-											<td><a href="#" data-modal-open="app-cancel" data-app-id="<?= $app['id'] ?>" class="link link_danger">Отклонить</a></td>
+											<td><a href="#" data-modal-open="app-approve" data-app-id="<?= $app['id'] ?>" class="link <?= $notNew ? 'link_disabled' : '' ?>">Одобрить</a></td>
+											<td><a href="#" data-modal-open="app-cancel" data-app-id="<?= $app['id'] ?>" class="link link_danger <?= $notNew ? 'link_disabled' : '' ?>">Отклонить</a></td>
 										</tr>
 									<?php endforeach; ?>
 								</tbody>
@@ -83,28 +100,6 @@
 			</div>
 		</div>
 	</footer>
-	<!-- отклонить заявку -->
-	<div class="modal" id="app-cancel">
-		<div class="modal__overlay" data-modal-close></div>
-		<div class="modal__window">
-			<div class="modal__heading">
-				<h3 class="modal__title">Отклонить заявку?</h3>
-				<button class="btn-close" data-modal-close>&times;</button>
-			</div>
-			<div class="modal__content">
-				<form style="width: 100%;">
-					<input type="hidden" name="app-cancel-id" id="app-cancel-id">
-					<div class="space-b">
-						<textarea required class="input" name="refuse" placeholder="Причина отказа"></textarea>
-					</div>
-					<div class="inline inline_grow">
-						<button class="btn">Отклонить</button>
-						<a class="btn btn_outline" href="#" data-modal-close>Закрыть</a>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
 	<!-- одобрить заявку -->
 	<div class="modal" id="app-approve">
 		<div class="modal__overlay" data-modal-close></div>
@@ -114,13 +109,35 @@
 				<button class="btn-close" data-modal-close>&times;</button>
 			</div>
 			<div class="modal__content">
-				<form style="width: 100%;" enctype="multipart/form-data">
+				<form style="width: 100%;" method="post" action="/actions/appApprove.php" enctype="multipart/form-data">
 					<input type="hidden" name="app-approve-id" id="app-approve-id">
 					<div class="space-b">
-					<input required class="input" type="file" name="photo" accept="image/jpg, image/jpeg, image/png, image/bmp" placeholder="Фотография заявки">
+						<input required class="input" type="file" name="photoAfter" accept="image/jpg, image/jpeg, image/png, image/bmp" placeholder="Фотография заявки">
 					</div>
 					<div class="inline inline_grow">
 						<button class="btn">Одобрить</button>
+						<a class="btn btn_outline" href="#" data-modal-close>Закрыть</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- отклонить заявку -->
+	<div class="modal" id="app-cancel">
+		<div class="modal__overlay" data-modal-close></div>
+		<div class="modal__window">
+			<div class="modal__heading">
+				<h3 class="modal__title">Отклонить заявку?</h3>
+				<button class="btn-close" data-modal-close>&times;</button>
+			</div>
+			<div class="modal__content">
+				<form style="width: 100%;" method="post" action="/actions/appCancel.php">
+					<input type="hidden" name="app-cancel-id" id="app-cancel-id">
+					<div class="space-b">
+						<textarea required class="input" name="reason" placeholder="Причина отказа"></textarea>
+					</div>
+					<div class="inline inline_grow">
+						<button class="btn">Отклонить</button>
 						<a class="btn btn_outline" href="#" data-modal-close>Закрыть</a>
 					</div>
 				</form>

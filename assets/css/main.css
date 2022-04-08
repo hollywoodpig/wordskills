@@ -327,6 +327,10 @@ th {
 	color: var(--text-muted-color);
 }
 
+.text-accent {
+	color: var(--accent-color);
+}
+
 .text-danger {
 	color: var(--danger-color);
 }
@@ -433,6 +437,7 @@ th {
 
 .table {
 	overflow-x: auto;
+	font-size: var(--small-size);
 }
 
 .table table {

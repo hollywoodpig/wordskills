@@ -68,13 +68,30 @@
 										<th>Действие</th>
 									</tr>
 									<?php foreach($apps as $app): ?>
+										<?php
+											$notNew = $appModel->getField('status', $app['id']) != 'Новая';
+											$isApproved = $appModel->getField('status', $app['id']) == 'Решена';
+											$isCancel = $appModel->getField('status', $app['id']) == 'Отклонена';
+
+											$color = '';
+
+											if ($isApproved) {
+												$color = 'text-accent';
+											} elseif ($isCancel) {
+												$color = 'text-danger';
+											}
+										?>
+
 										<tr>
 											<td><?= $app['name'] ?></td>
-											<td><?= $app['status'] ?></td>
+											<td>
+												<p class="<?= $color ?>"><?= $app['status'] ?></p>
+												<p><?= $isCancel ? 'Причина: ' . $app['reason'] : '' ?></p>
+											</td>
 											<td><?= $appModel->getCat($app['cat_id']) ?></td>
 											<td><?= $app['created'] ?></td>
 											<td><?= $app['text'] ?></td>
-											<td><a href="#" data-modal-open="app-delete" data-app-id="<?= $app['id'] ?>" class="link link_danger">Удалить</a></td>
+											<td><a href="#" data-modal-open="app-delete" data-app-id="<?= $app['id'] ?>" class="link link_danger <?= $notNew ? 'link_disabled' : '' ?>">Удалить</a></td>
 										</tr>
 									<?php endforeach; ?>
 								</tbody>

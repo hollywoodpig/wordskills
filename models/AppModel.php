@@ -22,6 +22,27 @@
 			return $this->db->prepare('delete from apps where id = :id')->execute(['id' => $id]);
 		}
 
+		// approve one
+
+		public function approveApp($id, $photoAfter) {
+			return $this->db->prepare('update apps set status = "Решена", photo_after = :photoAfter where id = :id')->execute(['id' => $id, 'photoAfter' => $photoAfter]);
+		}
+
+		// cancel one
+
+		public function cancelApp($id, $reason) {
+			return $this->db->prepare('update apps set status = "Отклонена", reason = :reason where id = :id')->execute(['id' => $id, 'reason' => $reason]);
+		}
+
+		// get field
+
+		public function getField($field, $id) {
+			$query = $this->db->prepare("select $field from apps where id = :id");
+			$query->execute(['id' => $id]);
+
+			return $query->fetchColumn();
+		}
+
 		/* == categories == */
 
 		// get all
