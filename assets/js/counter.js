@@ -16,12 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		const newValue = parseInt(counter)
 
 		if (oldValue < newValue) {
-			// play sound
-
-			notification.play()
-			
-			// render
-
 			counterValue.classList.add('active')
 	
 			setTimeout(() => {
