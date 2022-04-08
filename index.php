@@ -47,7 +47,7 @@
 					<!-- счетчик -->
 					<div class="app-counter">
 						<span class="app-counter__text">Заявок решено:</span>
-						<strong class="app-counter__value">5</strong>
+						<strong class="app-counter__value">0</strong>
 					</div>
 				</div>
 				<div class="section__content">

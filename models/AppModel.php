@@ -16,6 +16,15 @@
 			return $this->db->query('select * from apps where status = "Решена" order by id desc limit 4')->fetchAll();
 		}
 
+		// get field
+
+		public function getField($field, $id) {
+			$query = $this->db->prepare("select $field from apps where id = :id");
+			$query->execute(['id' => $id]);
+
+			return $query->fetchColumn();
+		}
+
 		// add one
 
 		public function addApp($userId, $catId, $name, $text, $photo, $created) {
@@ -40,13 +49,10 @@
 			return $this->db->prepare('update apps set status = "Отклонена", reason = :reason where id = :id')->execute(['id' => $id, 'reason' => $reason]);
 		}
 
-		// get field
+		// approved count
 
-		public function getField($field, $id) {
-			$query = $this->db->prepare("select $field from apps where id = :id");
-			$query->execute(['id' => $id]);
-
-			return $query->fetchColumn();
+		public function approvedCount() {
+			return $this->db->query('select count(*) as counter from apps where status = "Решена"')->fetch();
 		}
 
 		/* == categories == */

@@ -188,6 +188,7 @@ th {
 	overflow: hidden;
 	height: 80rem;
 	border-radius: var(--bdrs);
+	border: 1px solid var(--border-color);
 }
 
 .app__photos:hover .app__img_before {

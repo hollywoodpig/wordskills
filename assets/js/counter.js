@@ -1,17 +1,42 @@
 document.addEventListener('DOMContentLoaded', () => {
-	const counter = document.querySelector('.app-counter__value')
+	const counterValue = document.querySelector('.app-counter__value')
 
-	let counterValue = parseInt(counter.textContent)
+	// utils
 
-	setInterval(() => {
-		counter.classList.add('active')
+	const getCounter = async () => {
+		return fetch('/api/counter.php')
+			.then(res => res.json())
+			.then(data => data)
+	}
+
+	const updateValue = async () => {
+		const { counter } = await getCounter()
+
+		const oldValue = parseInt(counterValue.textContent)
+		const newValue = parseInt(counter)
+
+		if (oldValue < newValue) {
+			// play sound
+
+			notification.play()
+			
+			// render
+
+			counterValue.classList.add('active')
 	
-		setTimeout(() => {
-			counter.textContent = ++counterValue // давайте представим что тут обращение к серверу
-		}, 200)
-	
-		setTimeout(() => {
-			counter.classList.remove('active')
-		}, 400)
-	}, 5000)
+			setTimeout(() => {
+				counterValue.textContent = newValue
+			}, 200)
+		
+			setTimeout(() => {
+				counterValue.classList.remove('active')
+			}, 400)
+		}
+	}
+
+	// fetch every 5 sec
+
+	updateValue()
+
+	setInterval(updateValue, 5000)
 })
