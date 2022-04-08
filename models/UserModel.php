@@ -96,4 +96,15 @@
 
 			return $query->fetchAll();
 		}
+
+		// get all with status
+
+		public function getAppsWithStatus($status) {
+			$userId = $_SESSION['user']['id'];
+
+			$query = $this->db->prepare("select * from apps where user_id = :id and status = :status");
+			$query->execute(['id' => $userId, 'status' => $status]);
+
+			return $query->fetchAll();
+		}
 	}

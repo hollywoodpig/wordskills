@@ -6,9 +6,16 @@
 	$appModel = new AppModel();
 
 	if (!$userModel->isLogged()) return $userModel->redirect('index.php');
-	if ($userModel->isAdmin()) return $userModel->redirect('admin.php');
+	if ($userModel->isAdmin()) return $userModel->redirect('admin.php');	
 
-	$apps = $userModel->getApps();
+	$status = $_GET['status'] ?? '';
+
+	if (empty($status)) {
+		$apps = $userModel->getApps();
+	} else {
+		$apps = $userModel->getAppsWithStatus($status);
+	}
+
 	$appsNotNull = !empty($apps);
 ?>
 
@@ -46,12 +53,12 @@
 					<div class="space-b">
 						<form class="form-inline">
 							<select class="input" name="status">
-								<option selected disabled >Показывать только по статусу</option>
-								<option value="Новая">Новая</option>
-								<option value="Решена">Решена</option>
-								<option value="Отклонена">Отклонена</option>
+								<option value="">Все</option>
+								<option <?= $status == 'Новая' ? 'selected' : '' ?> value="Новая">Новая</option>
+								<option <?= $status == 'Решена' ? 'selected' : '' ?> value="Решена">Решена</option>
+								<option <?= $status == 'Отклонена' ? 'selected' : '' ?> value="Отклонена">Отклонена</option>
 							</select>
-							<button class="btn">Вывести</button>
+							<button class="btn">Показать</button>
 						</form>
 					</div>
 					<!-- заявки пользователя -->
@@ -98,7 +105,7 @@
 							</table>
 						</div>
 					<?php else: ?>
-						<p>У вас пока нет заявок. Как насчет создать одну?</p>
+						<p>Заявок не найдено.</p>
 					<?php endif; ?>
 				</div>
 			</div>
