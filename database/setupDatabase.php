@@ -2,8 +2,8 @@
 	function setupDatabase($db) {
 		// create db
 	
-		$db->query('create database if not exists ws');
-		$db->query('use ws');
+		$db->query('create database if not exists wordskills_city');
+		$db->query('use wordskills_city');
 
 		// create users table
 

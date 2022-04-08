@@ -147,8 +147,8 @@
 						<textarea required class="input" name="reason" placeholder="Причина отказа"></textarea>
 					</div>
 					<div class="inline inline_grow">
-						<button class="btn">Отклонить</button>
-						<a class="btn btn_outline" href="#" data-modal-close>Закрыть</a>
+						<button class="btn btn_danger">Отклонить</button>
+						<a class="btn btn_danger btn_outline" href="#" data-modal-close>Закрыть</a>
 					</div>
 				</form>
 			</div>
