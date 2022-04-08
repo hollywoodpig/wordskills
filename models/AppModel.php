@@ -10,6 +10,12 @@
 			return $this->db->query('select * from apps')->fetchAll();
 		}
 
+		// get approved apps
+
+		public function getApproved() {
+			return $this->db->query('select * from apps where status = "Решена" order by id desc limit 4')->fetchAll();
+		}
+
 		// add one
 
 		public function addApp($userId, $catId, $name, $text, $photo, $created) {

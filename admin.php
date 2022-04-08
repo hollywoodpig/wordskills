@@ -11,6 +11,8 @@
 
 	$apps = $appModel->getAll();
 	$appsNotEmpty = !empty($apps);
+
+	$isError = $_GET['error'] ?? '';
 ?>
 
 <!doctype html>
@@ -43,6 +45,14 @@
 					<h1 class="section__title">Добро пожаловать, <?= $userModel->get('name') ?>. Вот список всех заявок на сайте:</h1>
 				</div>
 				<div class="section__content">
+					<?php if($isError): ?>
+						<div class="alert">
+							<div class="alert__content">
+								<span class="alert__text">Размер файла слишком большой. Выберите другую фотографию.</span>
+								<button class="btn-close">&times;</button>
+							</div>
+						</div>
+					<?php endif; ?>
 					<?php if($appsNotEmpty): ?>
 						<div class="table">
 							<table>

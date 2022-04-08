@@ -1,7 +1,12 @@
 <?php
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/models/UserModel.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/models/AppModel.php';
 
 	$userModel = new UserModel();
+	$appModel = new AppModel();
+
+	$solvedApps = $appModel->getApproved();
+	$solvedAppsNotEmpty = !empty($solvedApps);
 ?>
 
 <!doctype html>
@@ -35,7 +40,6 @@
 		</div>
 	</header>
 	<main class="main">
-		<!-- последние решенные заявки -->
 		<section class="section">
 			<div class="container">
 				<div class="section__heading">
@@ -47,64 +51,33 @@
 					</div>
 				</div>
 				<div class="section__content">
-					<div class="solved-apps">
-						<!-- 1 заявка -->
-						<div class="app">
-							<div class="app__photos">
-								<img class="app__img app__img_before" src="https://magazine.skyeng.ru/wp-content/uploads/2019/03/shutterstock_745196731.jpg" alt="">
-								<img class="app__img app__img_after" src="https://yt3.ggpht.com/IOezcBl3gW8uGXhQR5ghtYE15stxDcoaNC0UFkZ5gRJ0x6Dl3rN2mrm5VYaKSQ9vDWnt2zzO=s900-c-k-c0x00ffffff-no-rj" alt="">
-							</div>
-							<div class="app__content">
-								<strong class="app__name text-limit" title="У кота появился хозяин">У кота появился хозяин</strong>
-								<div class="text-muted text-limit">
-									<small class="app__time">2018-09-12</small>
-									<small class="app__category" title="Категория: Коты">Категория: Коты</small>
+					<!-- последние решенные заявки -->
+					<?php if ($solvedAppsNotEmpty): ?>
+						<div class="solved-apps">
+							<?php foreach($solvedApps as $app): ?>
+								<?php
+									$photo = 'data:image/png;base64,' . base64_encode($app['photo']);
+									$photoAfter = 'data:image/png;base64,' . base64_encode($app['photo_after']);
+								?>
+
+								<div class="app">
+									<div class="app__photos">
+										<img class="app__img app__img_before" src="<?= $photo ?>" alt="<?= $app['name'] . ' до' ?>">
+										<img class="app__img app__img_after" src="<?= $photoAfter ?>" alt="<?= $app['name'] . ' после' ?>">
+									</div>
+									<div class="app__content">
+										<strong class="app__name text-limit" title="<?= $app['name'] ?>"><?= $app['name'] ?></strong>
+										<div class="text-muted">
+											<small class="app__time"><?= $app['created'] ?></small>
+											<small class="app__category text-limit" title="<?= $appModel->getCat($app['cat_id']) ?>">Категория: <?= $appModel->getCat($app['cat_id']) ?></small>
+										</div>
+									</div>
 								</div>
-							</div>
+							<?php endforeach; ?>
 						</div>
-						<!-- 2 заявка -->
-						<div class="app">
-							<div class="app__photos">
-								<img class="app__img app__img_before" src="https://magazine.skyeng.ru/wp-content/uploads/2019/03/shutterstock_745196731.jpg" alt="">
-								<img class="app__img app__img_after" src="https://yt3.ggpht.com/IOezcBl3gW8uGXhQR5ghtYE15stxDcoaNC0UFkZ5gRJ0x6Dl3rN2mrm5VYaKSQ9vDWnt2zzO=s900-c-k-c0x00ffffff-no-rj" alt="">
-							</div>
-							<div class="app__content">
-								<strong class="app__name text-limit" title="У кота появился хозяин">У кота появился хозяин</strong>
-								<div class="text-muted text-limit">
-									<small class="app__time">2018-09-12</small>
-									<small class="app__category" title="Категория: Коты">Категория: Коты</small>
-								</div>
-							</div>
-						</div>
-						<!-- 3 заявка -->
-						<div class="app">
-							<div class="app__photos">
-								<img class="app__img app__img_before" src="https://magazine.skyeng.ru/wp-content/uploads/2019/03/shutterstock_745196731.jpg" alt="">
-								<img class="app__img app__img_after" src="https://yt3.ggpht.com/IOezcBl3gW8uGXhQR5ghtYE15stxDcoaNC0UFkZ5gRJ0x6Dl3rN2mrm5VYaKSQ9vDWnt2zzO=s900-c-k-c0x00ffffff-no-rj" alt="">
-							</div>
-							<div class="app__content">
-								<strong class="app__name text-limit" title="У кота появился хозяин">У кота появился хозяин</strong>
-								<div class="text-muted text-limit">
-									<small class="app__time">2018-09-12</small>
-									<small class="app__category" title="Категория: Коты">Категория: Коты</small>
-								</div>
-							</div>
-						</div>
-						<!-- 4 заявка -->
-						<div class="app">
-							<div class="app__photos">
-								<img class="app__img app__img_before" src="https://magazine.skyeng.ru/wp-content/uploads/2019/03/shutterstock_745196731.jpg" alt="">
-								<img class="app__img app__img_after" src="https://yt3.ggpht.com/IOezcBl3gW8uGXhQR5ghtYE15stxDcoaNC0UFkZ5gRJ0x6Dl3rN2mrm5VYaKSQ9vDWnt2zzO=s900-c-k-c0x00ffffff-no-rj" alt="">
-							</div>
-							<div class="app__content">
-								<strong class="app__name text-limit" title="У кота появился хозяин">У кота появился хозяин</strong>
-								<div class="text-muted text-limit">
-									<small class="app__time">2018-09-12</small>
-									<small class="app__category" title="Категория: Коты">Категория: Коты</small>
-								</div>
-							</div>
-						</div>
-					</div>
+					<?php else: ?>
+						<p>Пока что решенных заявок нет. Но мы их будем решать, когда они начнут появляться, ага?</p>
+					<?php endif; ?>
 				</div>
 			</div>
 		</section>

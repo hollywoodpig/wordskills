@@ -11,16 +11,22 @@
 
 	$appCats = $appModel->getCats();
 
-	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-		$userId = $userModel->get('id');
-		$catId = $_POST['cat-id'];
-		$name = $_POST['name'];
-		$text = $_POST['text'];
-		$photo = file_get_contents($_FILES['photo']['tmp_name']);
-		$created = date('d.m.Y H:i');
+	$isError = false;
 
-		$appModel->addApp($userId, $catId, $name, $text, $photo, $created);
-		$appModel->redirect('profile.php');
+	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+		if (isset($_FILES['photo'])) {
+			$userId = $userModel->get('id');
+			$catId = $_POST['cat-id'];
+			$name = $_POST['name'];
+			$text = $_POST['text'];
+			$photo = file_get_contents($_FILES['photo']['tmp_name']);
+			$created = date('d.m.Y H:i');
+
+			$appModel->addApp($userId, $catId, $name, $text, $photo, $created);
+			return $appModel->redirect('profile.php');
+		}
+
+		$isError = true;
 	}
 ?>
 
@@ -53,6 +59,14 @@
 					<h1 class="section__title">Добавление заявки</h1>
 				</div>
 				<div class="section__content">
+					<?php if($isError): ?>
+						<div class="alert">
+							<div class="alert__content">
+								<span class="alert__text">Размер файла слишком большой. Выберите другую фотографию.</span>
+								<button class="btn-close">&times;</button>
+							</div>
+						</div>
+					<?php endif; ?>
 					<form class="form" method="post" enctype="multipart/form-data">
 						<input required name="name" type="text" class="input" placeholder="Название заявки">
 						<textarea required name="text" class="input" placeholder="Описание заявки"></textarea>
@@ -62,7 +76,7 @@
 							<?php endforeach; ?>
 						</select>
 						<input required class="input" type="file" name="photo" accept="image/jpg, image/jpeg, image/png, image/bmp" placeholder="Фотография заявки">
-						<button class="btn">Добавить</button>
+						<button name="submit" class="btn">Добавить</button>
 					</form>
 				</div>
 			</div>
