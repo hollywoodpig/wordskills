@@ -5,8 +5,6 @@
 	$userModel = new UserModel();
 	$appModel = new AppModel();
 
-	// $userModel->fillDb();
-
 	$solvedApps = $appModel->getApproved();
 	$solvedAppsNotEmpty = !empty($solvedApps);
 ?>
