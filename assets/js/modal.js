@@ -49,14 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	passData(appCancelTriggers, 'data-app-id', appCancelInput)
 
-	// app cancel form
+	// app approve form
 
 	const appApproveTriggers = document.querySelectorAll('[data-modal-open="app-approve"]')
 	const appApproveInput = document.getElementById('app-approve-id')
 
 	passData(appApproveTriggers, 'data-app-id', appApproveInput)
 
-	// app category delete form
+	// app cat delete form
 
 	const appCategoryDeleteTriggers = document.querySelectorAll('[data-modal-open="app-category-delete"]')
 	const appCategoryDeleteInput = document.getElementById('app-category-delete-id')

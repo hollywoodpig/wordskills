@@ -176,7 +176,7 @@ th {
 /* app */
 
 .app {
-	flex: 1 0 130rem;
+	flex: 1 0 110rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -191,7 +191,7 @@ th {
 .app__photos {
 	position: relative;
 	overflow: hidden;
-	height: 120rem;
+	aspect-ratio: 16 / 9;
 	border-radius: var(--bdrs);
 	border: 1px solid var(--border-color);
 }
