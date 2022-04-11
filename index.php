@@ -65,12 +65,10 @@
 										<img class="app__img app__img_before" src="<?= $photo ?>" alt="<?= $app['name'] . ' до' ?>">
 										<img class="app__img app__img_after" src="<?= $photoAfter ?>" alt="<?= $app['name'] . ' после' ?>">
 									</div>
-									<div class="app__content">
-										<strong class="app__name text-limit" title="<?= $app['name'] ?>"><?= $app['name'] ?></strong>
-										<div class="text-muted">
-											<small class="app__time"><?= $app['created'] ?></small>
-											<small class="app__category text-limit" title="<?= $appModel->getCat($app['cat_id']) ?>">Категория: <?= $appModel->getCat($app['cat_id']) ?></small>
-										</div>
+									<strong class="app__name text-limit" style="--limit: 2;" title="<?= $app['name'] ?>"><?= $app['name'] ?></strong>
+									<div class="text-muted">
+										<small class="app__time"><?= $app['created'] ?></small>
+										<small class="app__category" title="<?= $appModel->getCat($app['cat_id']) ?>">Категория: <?= $appModel->getCat($app['cat_id']) ?></small>
 									</div>
 								</div>
 							<?php endforeach; ?>

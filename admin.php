@@ -63,11 +63,11 @@
 										<th>Категория</th>
 										<th>Время</th>
 										<th>Описание</th>
-										<th colspan="2">Действие</th>
+										<th colspan="2">Действия</th>
 									</tr>
 									<?php foreach($apps as $app): ?>
 										<?php
-											$notNew = $appModel->getField('status', $app['id']) != 'Новая';
+											$isNew = $appModel->getField('status', $app['id']) == 'Новая';
 											$isApproved = $appModel->getField('status', $app['id']) == 'Решена';
 											$isCancel = $appModel->getField('status', $app['id']) == 'Отклонена';
 
@@ -89,8 +89,12 @@
 											<td><?= $appModel->getCat($app['cat_id']); ?></td>
 											<td><?= $app['created'] ?></td>
 											<td><?= $app['text'] ?></td>
-											<td><a href="#" data-modal-open="app-approve" data-app-id="<?= $app['id'] ?>" class="link <?= $notNew ? 'link_disabled' : '' ?>">Одобрить</a></td>
-											<td><a href="#" data-modal-open="app-cancel" data-app-id="<?= $app['id'] ?>" class="link link_danger <?= $notNew ? 'link_disabled' : '' ?>">Отклонить</a></td>
+											<?php if ($isNew): ?>
+												<td><a href="#" data-modal-open="app-approve" data-app-id="<?= $app['id'] ?>" class="link">Одобрить</a></td>
+												<td><a href="#" data-modal-open="app-cancel" data-app-id="<?= $app['id'] ?>" class="link link_danger">Отклонить</a></td>
+											<?php else: ?>
+												<td colspan="2"><span class="link link_disabled">Недоступно</span></td>
+											<?php endif; ?>
 										</tr>
 									<?php endforeach; ?>
 								</tbody>
